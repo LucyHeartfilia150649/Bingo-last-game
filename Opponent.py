@@ -1,12 +1,14 @@
 from Start import *
 from Card import Card
 
+
 class Bot:
     def __init__(self, name, y_offset):
         self.name = name
         self.card = Card()
         self.y_offset = y_offset
         self.has_bingo = False
+
     def mark_automatically(self, announced_number):
         for col in range(size_card):
             for row in range(size_card):
@@ -20,19 +22,42 @@ class Bot:
     def draw_bot_card(self, screen):
         for col in range(size_card):
             for row in range(size_card):
-                x = (screen_width // 4 - (5 * bot_size_block) // 2 + col * bot_size_block)-100 
+                x = (
+                    screen_width // 4 - (5 * bot_size_block) // 2 + col * bot_size_block
+                ) - 100
                 y = self.y_offset + row * bot_size_block
                 pygame.draw.rect(screen, orange, (x, y, bot_size_block, bot_size_block))
-                pygame.draw.rect(screen, navy_blue, (x, y, bot_size_block, bot_size_block),1)
-                
+                pygame.draw.rect(
+                    screen, navy_blue, (x, y, bot_size_block, bot_size_block), 1
+                )
+
                 if (col, row) in self.card.clicked_cells:
-                    if self.name == 'octopus':
-                        screen.blit(bot_mark('octopus_mark'), (x, y))
-                    elif self.name == 'seahorse':
-                        screen.blit(bot_mark('seahorse_mark'), (x, y))
+                    if self.name == "octopus":
+                        screen.blit(bot_mark("octopus_mark"), (x, y))
+                    elif self.name == "seahorse":
+                        screen.blit(bot_mark("seahorse_mark"), (x, y))
                     else:
-                        screen.blit(bot_mark('crab_mark'), (x, y))
+                        screen.blit(bot_mark("crab_mark"), (x, y))
                 else:
-                    number_text = font(8).render(str(self.card.card_numbers[col][row]), True, black) if self.card.card_numbers[col][row] == 'FREE' else font(12).render(str(self.card.card_numbers[col][row]), True, black)
-                    screen.blit(number_text, (x + bot_size_block // 2 - number_text.get_width() // 2, y + bot_size_block // 2 - number_text.get_height() // 2))
-        
+                    number_text = (
+                        font(8).render(
+                            str(self.card.card_numbers[col][row]), True, black
+                        )
+                        if self.card.card_numbers[col][row] == "FREE"
+                        else font(12).render(
+                            str(self.card.card_numbers[col][row]), True, black
+                        )
+                    )
+                    screen.blit(
+                        number_text,
+                        (
+                            x + bot_size_block // 2 - number_text.get_width() // 2,
+                            y + bot_size_block // 2 - number_text.get_height() // 2,
+                        ),
+                    )
+                if self.name == "octopus":
+                    screen.blit(octopus2, (290, 200))
+                elif self.name == "seahorse":
+                    screen.blit(seahorse2, (115, 400))
+                else:
+                    screen.blit(crab2, (285, 600))

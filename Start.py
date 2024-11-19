@@ -9,6 +9,7 @@ white = pygame.Color(255, 255, 255)
 navy_blue = pygame.Color(0, 0, 100)
 yellow = pygame.Color(255, 255, 0)
 orange = pygame.Color(255, 200, 124)
+ocean = pygame.Color(30,150,252)
 
 # constants
 screen_width = 1280
@@ -27,19 +28,22 @@ BINGO = pygame.image.load("picture/BINGO.png")
 chest = pygame.transform.scale(pygame.image.load("picture/chest.png"), (301.8, 300))
 crab = pygame.transform.scale(pygame.image.load("picture/crab.png"), (170.6, 240))
 fish = pygame.transform.scale(pygame.image.load("picture/fish.png"), (200, 200))
-octopus = pygame.transform.scale(pygame.image.load("picture/octopus.png"), (200, 200))
+octopus = pygame.transform.scale(pygame.image.load("picture/octopus.png"), (185, 185))
 sand = pygame.image.load("picture/sand.png")
 seahorse = pygame.transform.scale(pygame.image.load("picture/seahorse.png"), (153, 240))
 seaweed = pygame.image.load("picture/seaweed.png")
 seaweed2 = pygame.image.load("picture/seaweed2.png")
 shark = pygame.transform.scale(pygame.image.load("picture/shark.png"), (150, 150))
-seahorse2 = pygame.transform.scale(pygame.image.load("picture/seahorse2.png"), (50, 50))
+seahorse2 = pygame.transform.scale(pygame.image.load("picture/seahorse2.png"), (55, 55))
 octopus2 = pygame.transform.scale(pygame.image.load("picture/octopus2.png"), (50, 50))
 crab2 = pygame.transform.scale(pygame.image.load("picture/crab2.png"), (60, 60))
 shark2 = pygame.transform.scale(pygame.image.load("picture/shark2.png"), (250, 250))
 pause_screen = pygame.transform.scale(
     pygame.image.load("picture/pause.png"), (690, 490)
 )
+turtle = pygame.image.load("picture/turtle.png")
+cloral = pygame.image.load("picture/cloral.png")
+g_of_fish = pygame.image.load("picture/g_of_fish.png")
 
 
 def bot_mark(mark):

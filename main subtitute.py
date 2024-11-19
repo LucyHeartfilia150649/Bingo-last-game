@@ -5,6 +5,7 @@ from Start import *
 from menu import Menu
 from Opponent import Bot
 
+
 class BingoGame:
     def __init__(self):
         pygame.init()
@@ -55,9 +56,7 @@ class BingoGame:
                     if paused.checkForInput(position_mouse):
                         if self.pause():
                             return
-                    card.mark_number(
-                        event.pos, announced_number, card.card_numbers
-                    )
+                    card.mark_number(event.pos, announced_number, card.card_numbers)
             screen.blit(blue_screen, (0, 0))
             card.draw_grid(card.clicked_cells)
             paused.changeColor(position_mouse)
@@ -106,11 +105,11 @@ class BingoGame:
                     if paused.checkForInput(position_mouse):
                         if self.pause():
                             return
-                    card.mark_number(
-                        event.pos, announced_number, card.card_numbers
-                    )
+                    card.mark_number(event.pos, announced_number, card.card_numbers)
             screen.blit(blue_screen, (0, 0))
             card.draw_grid(card.clicked_cells)
+            screen.blit(shark2, (0, 100))
+            screen.blit(octopus, (1050, 510))
             announce.draw_number(screen)
             paused.changeColor(position_mouse)
             paused.update(screen)
@@ -182,7 +181,9 @@ class BingoGame:
             pygame.draw.rect(screen, yellow, menu_box, 5)
             screen.blit(pause_screen, (305, 155))
 
-            screen.blit(pause_text, (screen_width // 2 - pause_text.get_width() // 2, 200))
+            screen.blit(
+                pause_text, (screen_width // 2 - pause_text.get_width() // 2, 200)
+            )
             resume.changeColor(mouse)
             resume.update(screen)
             menu.changeColor(mouse)
@@ -190,12 +191,30 @@ class BingoGame:
 
             pygame.display.update()
 
-    def opponent_game_over(self, card):
+    def opponent_game_over(self, card): #แพ้บอท
         pygame.mixer_music.stop()
         game_over_sound = pygame.mixer.Sound("sounds/losing/game_over.mp3")
         game_over_sound.play()
-        restart = Button(yellow_button, glow_button, (320, 600), "main menu", font(40), black, light_blue, 0.5)
-        exits = Button(yellow_button, glow_button, (960, 600), "exit", font(40), black, light_blue, 0.5)
+        restart = Button(
+            yellow_button,
+            glow_button,
+            (320, 600),
+            "main menu",
+            font(40),
+            black,
+            light_blue,
+            0.5,
+        )
+        exits = Button(
+            yellow_button,
+            glow_button,
+            (960, 600),
+            "exit",
+            font(40),
+            black,
+            light_blue,
+            0.5,
+        )
         game_over_text = font(100).render("GAME OVER!", True, yellow)
         while True:
             mouse = pygame.mouse.get_pos()
@@ -211,7 +230,14 @@ class BingoGame:
                         pygame.quit()
                         sys.exit()
             screen.blit(blue_screen, (0, 0))
-            screen.blit(game_over_text, (screen_width // 2 - game_over_text.get_width() // 2, screen_height // 2 - game_over_text.get_height() // 2 - 50))
+            #ตกแต่ง
+            screen.blit(
+                game_over_text,
+                (
+                    screen_width // 2 - game_over_text.get_width() // 2,
+                    screen_height // 2 - game_over_text.get_height() // 2 - 50,
+                ),
+            )
             card.draw_bot_card(screen)
             restart.changeColor(mouse)
             restart.update(screen)
@@ -223,8 +249,26 @@ class BingoGame:
         pygame.mixer_music.stop()
         game_over_sound = pygame.mixer.Sound("sounds/losing/game_over.mp3")
         game_over_sound.play()
-        restart = Button(yellow_button, glow_button, (320, 600), "main menu", font(40), black, light_blue, 0.5)
-        exits = Button(yellow_button, glow_button, (960, 600), "exit", font(40), black, light_blue, 0.5)
+        restart = Button(
+            yellow_button,
+            glow_button,
+            (320, 600),
+            "main menu",
+            font(40),
+            black,
+            light_blue,
+            0.5,
+        )
+        exits = Button(
+            yellow_button,
+            glow_button,
+            (960, 600),
+            "exit",
+            font(40),
+            black,
+            light_blue,
+            0.5,
+        )
         game_over_text = font(100).render("GAME OVER!", True, yellow)
         while True:
             mouse = pygame.mouse.get_pos()
@@ -240,7 +284,13 @@ class BingoGame:
                         pygame.quit()
                         sys.exit()
             screen.blit(blue_screen, (0, 0))
-            screen.blit(game_over_text, (screen_width // 2 - game_over_text.get_width() // 2, screen_height // 2 - game_over_text.get_height() // 2 - 50))
+            screen.blit(
+                game_over_text,
+                (
+                    screen_width // 2 - game_over_text.get_width() // 2,
+                    screen_height // 2 - game_over_text.get_height() // 2 - 50,
+                ),
+            )
             restart.changeColor(mouse)
             restart.update(screen)
             exits.changeColor(mouse)
@@ -273,7 +323,13 @@ class BingoGame:
                     if bingo_button.checkForInput(mouse):
                         sound_check = True
                         screen.blit(blue_screen, (0, 0))
-                        screen.blit(BINGO, (screen_width // 2 - BINGO.get_width() // 2, screen_height // 2 - BINGO.get_height() // 2))
+                        screen.blit(
+                            BINGO,
+                            (
+                                screen_width // 2 - BINGO.get_width() // 2,
+                                screen_height // 2 - BINGO.get_height() // 2,
+                            ),
+                        )
                         pygame.display.update()
                         if sound_check == True:
                             sound1.play()
@@ -282,6 +338,7 @@ class BingoGame:
                             sound2.play()
                         return True
             screen.blit(blue_screen, (0, 0))
+            #ตกแต่ง
             card.draw_grid(card.clicked_cells)
             bingo_button.changeColor(mouse)
             bingo_button.update(screen)

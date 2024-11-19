@@ -59,7 +59,7 @@ class Menu:
             pygame.display.update()
 
     def option_draw(self):
-        select_option = font(100).render("Select GameMode", True, yellow)
+        select_option = font(100).render("Select Game Mode", True, yellow)
         enemy_game = Button(
             yellow_button,
             glow_button,
