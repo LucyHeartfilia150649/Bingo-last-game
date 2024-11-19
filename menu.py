@@ -74,7 +74,7 @@ class Menu:
             yellow_button,
             glow_button,
             (640, 600),
-            "sSingle Player",
+            "Single Player",
             font(40),
             black,
             light_blue,

@@ -16,7 +16,7 @@ screen_height = 720
 size_block = 80
 bot_size_block = 30
 size_card = 5
-announce_time = 0.5
+announce_time = 3 
 range_number = 50
 # img
 blue_screen = pygame.image.load("picture/background.png")
